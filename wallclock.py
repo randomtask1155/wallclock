@@ -13,21 +13,33 @@ import math
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import digits
 
+# digit offsets
 h0 = 189
 h1 = 126
 m0 = 63
 m1 = 0
+
+# sub lights offest
+sub0 = 208
+
 hd0Cache = -1
 hd1Cache = -1
 md0Cache = -1
 md1Cache = -1 # used to save the current minute so we know when to update the clock
+sub0Cache = -1 # 0 for morning and 1 for night
+
+
+# colors
+white = (255,255,255)
 pink = (252,15,192)
 shadedSpruce = (0,89,96)
-pixel_pin = board.D18
 
+## set up led strip
+defaultBrightness = 0.2
+pixel_pin = board.D18
 num_pixels = 219
 pixels = neopixel.NeoPixel(
-    pixel_pin, num_pixels, brightness=0.2
+    pixel_pin, num_pixels, brightness=defaultBrightness
 )
 
 pixels.fill((0, 0, 0))
@@ -64,6 +76,11 @@ def checkNeedsUpdate(m):
         return True
     return False
 
+def fillSublights(color, brightness):
+    pixels.brightness = brightness
+    digits.fillLEDs(pixels, sub0, num_pixels, color)
+    pixels.brightness = defaultBrightness
+
 while True:
     h,m = getTime()
     md0 = math.floor(m / 10)
@@ -93,6 +110,14 @@ while True:
     hd1Cache = hd1
     md0Cache = md0
     md1Cache = md1
+
+    if h >= 20 and h < 7 and sub0Cache != 1:
+        fillSublights(white, .8)
+        sub0Cache = 1
+    if h >=7 and h < 20 and sub0Cache != 0:
+        fillSublights(white, .2)
+        sub0Cache = 0
+
     time.sleep(3)
     
 
