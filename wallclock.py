@@ -69,7 +69,7 @@ while True:
     md0 = math.floor(m / 10)
     md1 = m % 10
     hd0 = 0
-    hd1 = 0
+    hd1 = h
     if h > 12:
         hd1 = h - 12 
     if hd1 > 9:
