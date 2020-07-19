@@ -20,7 +20,7 @@ m0 = 63
 m1 = 0
 
 # sub lights offest
-sub0 = 208
+sub0 = 207
 
 hd0Cache = -1
 hd1Cache = -1
