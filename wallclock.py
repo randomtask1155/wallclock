@@ -32,6 +32,7 @@ sub0Cache = -1 # 0 for morning and 1 for night
 # colors
 white = (255,255,255)
 pink = (252,15,192)
+green = (0,255,0)
 shadedSpruce = (0,89,96)
 
 ## set up led strip
@@ -42,7 +43,7 @@ pixels = neopixel.NeoPixel(
     pixel_pin, num_pixels, brightness=defaultBrightness
 )
 
-pixels.fill((0, 0, 0))
+pixels.fill((255, 255, 255))
 
 def getTime():
     now = datetime.datetime.now()
@@ -95,13 +96,13 @@ while True:
 
     if hd0 != hd0Cache:
         if hd0 == 1:
-            digits.One(pixels, h0, pink)
+            digits.One(pixels, h0, shadedSpruce)
         else:
             digits.emptyOne(pixels, h0)
     #print (hd0,hd1,md0,md1) 
         
     if hd1 != hd1Cache:
-        displayNumber(hd1, h1, pink)
+        displayNumber(hd1, h1, shadedSpruce)
     if md0 != md0Cache:
         displayNumber(md0, m0, shadedSpruce)
     if md1 != md1Cache:
