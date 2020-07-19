@@ -96,7 +96,7 @@ while True:
 
     if hd0 != hd0Cache:
         if hd0 == 1:
-            digits.One(pixels, h0, shadedSpruce)
+            digits.fillOne(pixels, h0, shadedSpruce)
         else:
             digits.emptyOne(pixels, h0)
     #print (hd0,hd1,md0,md1) 
