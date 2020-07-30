@@ -92,7 +92,7 @@ while True:
         hd1 = h - 12 
     if hd1 > 9:
         hd0 = 1
-        hd1 = h - 10
+        hd1 = hd1 - 10
 
     if hd0 != hd0Cache:
         if hd0 == 1:
