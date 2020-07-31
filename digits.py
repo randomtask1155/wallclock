@@ -3,8 +3,8 @@ def fillLEDs(p, s,e, color):
     for x in range(s,e):
         p[x] = color
     ## fill twice incase we miss something
-    for x in range(s,e):
-        p[x] = color
+    #for x in range(s,e):
+    #    p[x] = color
 
 def fillOne(p, offset, color):
     fillLEDs(p, offset, 18+offset, color)

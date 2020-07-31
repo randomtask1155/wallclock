@@ -37,7 +37,7 @@ shadedSpruce = (0,89,96)
 clockColor=white
 
 ## set up led strip
-defaultBrightness = 0.8
+defaultBrightness = 0.2
 pixel_pin = board.D18
 num_pixels = 219
 pixels = neopixel.NeoPixel(
