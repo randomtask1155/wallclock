@@ -34,9 +34,10 @@ white = (255,255,255)
 pink = (252,15,192)
 green = (0,255,0)
 shadedSpruce = (0,89,96)
+clockColor=white
 
 ## set up led strip
-defaultBrightness = 0.2
+defaultBrightness = 0.8
 pixel_pin = board.D18
 num_pixels = 219
 pixels = neopixel.NeoPixel(
@@ -96,17 +97,17 @@ while True:
 
     if hd0 != hd0Cache:
         if hd0 == 1:
-            digits.fillOne(pixels, h0, shadedSpruce)
+            digits.fillOne(pixels, h0, clockColor)
         else:
             digits.emptyOne(pixels, h0)
     #print (hd0,hd1,md0,md1) 
         
     if hd1 != hd1Cache:
-        displayNumber(hd1, h1, shadedSpruce)
+        displayNumber(hd1, h1, clockColor)
     if md0 != md0Cache:
-        displayNumber(md0, m0, shadedSpruce)
+        displayNumber(md0, m0, clockColor)
     if md1 != md1Cache:
-        displayNumber(md1, m1, shadedSpruce)
+        displayNumber(md1, m1, clockColor)
     hd0Cache = hd0
     hd1Cache = hd1
     md0Cache = md0
