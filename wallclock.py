@@ -6,9 +6,8 @@ import neopixel
 import time
 import sys
 import os
-import datetime
-import math
-
+import datetime 
+import math 
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import digits
@@ -88,7 +87,7 @@ def fillSublights(color, brightness):
     digits.fillLEDs(pixels, sub0, num_pixels, color)
     pixels.brightness = defaultBrightness
 
-def checkBrightness:
+def checkBrightness():
     if h > 8 and h < 19:
         if dayBrightness != brightnessCache:
             pixels.brightness = dayBrightness
