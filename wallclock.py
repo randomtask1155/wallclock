@@ -32,12 +32,16 @@ sub0Cache = -1 # 0 for morning and 1 for night
 # colors
 white = (255,255,255)
 pink = (252,15,192)
+red = (255,0,0)
 green = (0,255,0)
+blue = (0,0,255)
 shadedSpruce = (0,89,96)
 clockColor=white
 
 ## set up led strip
 defaultBrightness = 0.2
+dayBrightness = 0.4
+nightBrightness = 0.2
 pixel_pin = board.D18
 num_pixels = 219
 pixels = neopixel.NeoPixel(
@@ -94,6 +98,11 @@ while True:
     if hd1 > 9:
         hd0 = 1
         hd1 = hd1 - 10
+
+    ## set brightness based on time
+    pixels.brightness = nightBrightness 
+    if h > 8 and h < 19:
+        pixels.brightness = dayBrightness
 
     if hd0 != hd0Cache:
         if hd0 == 1:
