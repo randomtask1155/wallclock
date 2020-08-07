@@ -27,6 +27,7 @@ hd1Cache = -1
 md0Cache = -1
 md1Cache = -1 # used to save the current minute so we know when to update the clock
 sub0Cache = -1 # 0 for morning and 1 for night
+brightnessCache = -1
 
 
 # colors
@@ -87,6 +88,15 @@ def fillSublights(color, brightness):
     digits.fillLEDs(pixels, sub0, num_pixels, color)
     pixels.brightness = defaultBrightness
 
+def checkBrightness:
+    if h > 8 and h < 19:
+        if dayBrightness != brightnessCache:
+            pixels.brightness = dayBrightness
+            brightnessCache = dayBrightness
+    else:
+        if nightBrightness != brightnessCache:
+            pixels.brightness = nightBrightness
+            brightnessCache = nightBrightness
 while True:
     h,m = getTime()
     md0 = math.floor(m / 10)
@@ -100,9 +110,7 @@ while True:
         hd1 = hd1 - 10
 
     ## set brightness based on time
-    pixels.brightness = nightBrightness 
-    if h > 8 and h < 19:
-        pixels.brightness = dayBrightness
+    checkBrightness 
 
     if hd0 != hd0Cache:
         if hd0 == 1:
