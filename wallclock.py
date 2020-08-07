@@ -83,9 +83,9 @@ def checkNeedsUpdate(m):
     return False
 
 def fillSublights(color, brightness):
-    pixels.brightness = brightness
+    #pixels.brightness = brightness
     digits.fillLEDs(pixels, sub0, num_pixels, color)
-    pixels.brightness = defaultBrightness
+    #pixels.brightness = defaultBrightness
 
 def checkBrightness():
     if h > 8 and h < 19:
