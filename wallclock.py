@@ -30,6 +30,7 @@ brightnessCache = -1
 
 
 # colors
+black = (0,0,0)
 white = (255,255,255)
 pink = (252,15,192)
 red = (255,0,0)
@@ -87,15 +88,19 @@ def fillSublights(color, brightness):
     digits.fillLEDs(pixels, sub0, num_pixels, color)
     #pixels.brightness = defaultBrightness
 
-def checkBrightness():
+def checkBrightness(bc):
+    color = white
+    b = dayBrightness
     if h > 8 and h < 19:
-        if dayBrightness != brightnessCache:
+        color =  white
+        if dayBrightness != bc:
             pixels.brightness = dayBrightness
-            brightnessCache = dayBrightness
+            b = dayBrightness
     else:
-        if nightBrightness != brightnessCache:
+        if nightBrightness != bc:
             pixels.brightness = nightBrightness
-            brightnessCache = nightBrightness
+            b = nightBrightness
+    return color, b
 while True:
     h,m = getTime()
     md0 = math.floor(m / 10)
@@ -109,7 +114,7 @@ while True:
         hd1 = hd1 - 10
 
     ## set brightness based on time
-    checkBrightness 
+    clockColor, brightnessCache = checkBrightness(brightnessCache)
 
     if hd0 != hd0Cache:
         if hd0 == 1:
@@ -133,7 +138,7 @@ while True:
         fillSublights(white, .8)
         sub0Cache = 1
     if h >=7 and h < 20 and sub0Cache != 0:
-        fillSublights(white, .2)
+        fillSublights(black, .2)
         sub0Cache = 0
 
     time.sleep(3)
