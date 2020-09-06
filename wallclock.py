@@ -134,7 +134,7 @@ while True:
     md0Cache = md0
     md1Cache = md1
 
-    if h >= 20 and h < 7 and sub0Cache != 1:
+    if h >= 20 and sub0Cache != 1:
         fillSublights(white, .8)
         sub0Cache = 1
     if h >=7 and h < 20 and sub0Cache != 0:
